@@ -1,0 +1,33 @@
+<div class="container-fluid" style="background-color: #eee;">
+    <section style="background-color: #eee;">
+        <div class="container py-5">
+            <div class="rounded-circle d-flex align-items-center justify-content-center">
+                @for (item of categoryList; track $index) {
+                 <button [class]="selectedCategory ==item ?'btn btn-success mx-2':'btn btn-secondary mx-2'" (click)="filterCategor(item)"> {{item}}</button>
+                }
+            </div>
+            <div class="row"> 
+                @if (isLoader) {
+                    <img src="https://i.pinimg.com/originals/49/23/29/492329d446c422b0483677d0318ab4fa.gif">
+                } @else { 
+                    @if(filteredProducts.length == 0) {
+                        <div class="col-12 text-center">
+                            <p>No Products Found</p>
+                        </div>
+                    } @else {
+                        @for (item of filteredProducts; track $index) {
+                            <div class="col-md-12 col-lg-3 pt-2 mb-4 mb-lg-0">
+                                <app-product-card [product]="item"></app-product-card>
+                            </div>
+                            } 
+                    }
+                }
+               
+               
+                
+
+               
+            </div>
+        </div>
+    </section>
+</div>
